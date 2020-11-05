@@ -1,9 +1,4 @@
-﻿using Orders.Models.PostModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Orders.Models.ViewModels
 {
@@ -14,6 +9,6 @@ namespace Orders.Models.ViewModels
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
 
-        public ICollection<OrderPostModel> Orders { get; set; }
+        public ICollection<OrderViewModel> Orders { get; set; }
     }
 }
