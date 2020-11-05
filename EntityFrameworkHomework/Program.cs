@@ -28,8 +28,6 @@ namespace EntityFrameworkHomework
             var controller = new OrdersController();
             var product = controller.CreateProductRequest(productModel);
             var user = controller.CreateUserRequest(userModel);
-
-            //var o = controller.CreateOrderRequest(order);
         }
     }
 }
