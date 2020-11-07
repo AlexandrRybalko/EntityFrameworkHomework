@@ -1,5 +1,6 @@
 ﻿using Orders.DAL.Models;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Orders.DAL.Repositories
 {
@@ -12,39 +13,7 @@ namespace Orders.DAL.Repositories
             _ctx = new OrdersDBContext();
         }
 
-        public Product CreateProduct(Product model)
-        {
-            _ctx.Products.Add(model);
-            _ctx.SaveChanges();
-
-            return model;
-        }
-
-        public void DeleteProductById(int id)
-        {
-            var entity = _ctx.Products.FirstOrDefault(x => x.Id == id);
-            _ctx.Products.Remove(entity);
-
-            _ctx.SaveChanges();
-        }
-
-        public User CreateUser(User model)
-        {
-            _ctx.Users.Add(model);
-            _ctx.SaveChanges();
-
-            return model;
-        }
-
-        public void DeleteUserById(int id)
-        {
-            var entity = _ctx.Users.FirstOrDefault(x => x.Id == id);
-            _ctx.Users.Remove(entity);
-
-            _ctx.SaveChanges();
-        }
-
-        public Order CreateOrder(Order model)
+        public Order Create(Order model)
         {
             _ctx.Orders.Add(model);
             _ctx.SaveChanges();
@@ -52,12 +21,23 @@ namespace Orders.DAL.Repositories
             return model;
         }
 
-        public void DeleteOrderById(int id)
+        public void DeleteById(int id)
         {
             var entity = _ctx.Orders.FirstOrDefault(x => x.Id == id);
             _ctx.Orders.Remove(entity);
 
             _ctx.SaveChanges();
         }
+
+        public Order Update(Order model)
+        {
+            var order = _ctx.Orders.FirstOrDefault(x => x.Id == model.Id);
+            order.Date = model.Date;
+
+            _ctx.SaveChanges();
+
+            return order;
+        }
+
     }
 }

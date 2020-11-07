@@ -1,5 +1,6 @@
 ﻿using Orders.Controllers;
 using Orders.Models.PostModels;
+using Orders.Models.ViewModels;
 using System;
 
 namespace EntityFrameworkHomework
@@ -8,7 +9,7 @@ namespace EntityFrameworkHomework
     {
         static void Main(string[] args)
         {
-            var controller = new OrdersController();
+            var controller = new UsersController();
 
             var order = new OrderPostModel()
             {
@@ -24,9 +25,7 @@ namespace EntityFrameworkHomework
                     LastName = "cddd",
                     PhoneNumber = "+380912573499"
                 }
-            };
-
-            var o = controller.CreateOrderRequest(order);
+            };            
         }
     }
 }

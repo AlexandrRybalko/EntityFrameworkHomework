@@ -16,56 +16,39 @@ namespace Orders.Domain.Services
 
             var mapperConfig = new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<OrderModel, Order>();
+                cfg.CreateMap<OrderModel, Order>().ReverseMap();
+
                 cfg.CreateMap<ProductModel, Product>();
                 cfg.CreateMap<ProductModel, Product>().ReverseMap();
 
                 cfg.CreateMap<UserModel, User>();
                 cfg.CreateMap<UserModel, User>().ReverseMap();
-
-                cfg.CreateMap<OrderModel, Order>();
-                cfg.CreateMap<OrderModel, Order>().ReverseMap();
             });
 
             _mapper = new Mapper(mapperConfig);
         }
 
-        public ProductModel CreateProductRequest(ProductModel model)
-        {
-            var product = _mapper.Map<Product>(model);        
-            var createdProduct = _ordersEFRepository.CreateProduct(product);
-
-            return _mapper.Map<ProductModel>(createdProduct);
-        }
-
-        public void DeleteProductByIdRequest(int id)
-        {
-            _ordersEFRepository.DeleteProductById(id);
-        }
-
-        public UserModel CreateUserRequest(UserModel model)
-        {
-            var user = _mapper.Map<User>(model);
-            var createdUser = _ordersEFRepository.CreateUser(user);
-
-            return _mapper.Map<UserModel>(createdUser);
-        }
-
-        public void DeleteUserByIdRequest(int id)
-        {
-            _ordersEFRepository.DeleteUserById(id);
-        }
-
-        public OrderModel CreateOrderRequest(OrderModel model)
+        public OrderModel Create(OrderModel model)
         {
             var order = _mapper.Map<Order>(model);
-            var createdOrder = _ordersEFRepository.CreateOrder(order);
+            var createdOrder = _ordersEFRepository.Create(order);
             var result = _mapper.Map<OrderModel>(createdOrder);
+
             return result;
         }
 
-        public void DeleteOrderByIdRequest(int id)
+        public void DeleteById(int id)
         {
-            _ordersEFRepository.DeleteOrderById(id);
+            _ordersEFRepository.DeleteById(id);
+        }
+
+        public OrderModel Update(OrderModel model)
+        {
+            var order = _mapper.Map<Order>(model);
+            var updatedOrder = _ordersEFRepository.Update(order);
+
+            return _mapper.Map<OrderModel>(updatedOrder);
         }
     }
 }
