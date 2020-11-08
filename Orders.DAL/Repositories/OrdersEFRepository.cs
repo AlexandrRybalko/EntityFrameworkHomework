@@ -1,16 +1,15 @@
 ﻿using Orders.DAL.Models;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Orders.DAL.Repositories
 {
     public class OrdersEFRepository
     {
-        private readonly OrdersDBContext _ctx;
+        private readonly OrdersDBMigrationContext _ctx;
 
         public OrdersEFRepository()
         {
-            _ctx = new OrdersDBContext();
+            _ctx = new OrdersDBMigrationContext();
         }
 
         public Order Create(Order model)

@@ -5,10 +5,10 @@ namespace Orders.DAL.Repositories
 {
     public class ProductsEFRepository
     {
-        private readonly OrdersDBContext _ctx;
+        private readonly OrdersDBMigrationContext _ctx;
         public ProductsEFRepository()
         {
-            _ctx = new OrdersDBContext();
+            _ctx = new OrdersDBMigrationContext();
         }
 
         public Product Create(Product model)

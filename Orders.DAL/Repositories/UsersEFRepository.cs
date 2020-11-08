@@ -5,11 +5,11 @@ namespace Orders.DAL.Repositories
 {
     public class UsersEFRepository
     {
-        private readonly OrdersDBContext _ctx;
+        private readonly OrdersDBMigrationContext _ctx;
         
         public UsersEFRepository()
         {
-            _ctx = new OrdersDBContext();
+            _ctx = new OrdersDBMigrationContext();
         }
 
         public User Create(User model)

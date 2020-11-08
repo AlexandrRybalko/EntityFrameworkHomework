@@ -51,10 +51,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202011072206424_Initial_Create.cs" />
+    <Compile Include="Migrations\202011072206424_Initial_Create.designer.cs">
+      <DependentUpon>202011072206424_Initial_Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011082034367_Add_Connections_To_Tables.cs" />
+    <Compile Include="Migrations\202011082034367_Add_Connections_To_Tables.designer.cs">
+      <DependentUpon>202011082034367_Add_Connections_To_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="OrdersDBContext.cs" />
+    <Compile Include="OrdersDBMigrationContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\OrdersEFRepository.cs" />
     <Compile Include="Repositories\ProductsEFRepository.cs" />
@@ -63,6 +72,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011072206424_Initial_Create.resx">
+      <DependentUpon>202011072206424_Initial_Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011082034367_Add_Connections_To_Tables.resx">
+      <DependentUpon>202011082034367_Add_Connections_To_Tables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
