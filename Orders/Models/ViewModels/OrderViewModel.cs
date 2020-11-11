@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Orders.Models.ViewModels
 {
@@ -9,7 +10,7 @@ namespace Orders.Models.ViewModels
 
         public int UserId { get; set; }
         public UserViewModel User { get; set; }
-        public int ProductId { get; set; }
-        public ProductViewModel Product { get; set; }
+
+        public IEnumerable<ProductViewModel> Products { get; set; }
     }
 }

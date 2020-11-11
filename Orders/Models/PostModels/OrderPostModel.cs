@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Orders.Models.PostModels
 {
@@ -8,7 +9,7 @@ namespace Orders.Models.PostModels
 
         public int UserId { get; set; }
         public UserPostModel User { get; set; }
-        public int ProductId { get; set; }
-        public ProductPostModel Product { get; set; }
+
+        public IEnumerable<ProductPostModel> Products { get; set; }
     }
 }

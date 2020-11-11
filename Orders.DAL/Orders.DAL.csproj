@@ -59,6 +59,10 @@
     <Compile Include="Migrations\202011082034367_Add_Connections_To_Tables.designer.cs">
       <DependentUpon>202011082034367_Add_Connections_To_Tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011111224178_Changed_Connections.cs" />
+    <Compile Include="Migrations\202011111224178_Changed_Connections.designer.cs">
+      <DependentUpon>202011111224178_Changed_Connections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
@@ -79,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011082034367_Add_Connections_To_Tables.resx">
       <DependentUpon>202011082034367_Add_Connections_To_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011111224178_Changed_Connections.resx">
+      <DependentUpon>202011111224178_Changed_Connections.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

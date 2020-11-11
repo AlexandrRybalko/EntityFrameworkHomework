@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Orders.DAL.Models
 {
@@ -8,8 +9,8 @@ namespace Orders.DAL.Models
         public DateTime Date { get; set; }
 
         public int UserId { get; set; }
-        public virtual User User { get; set; }
-        public int ProductId { get; set; }
-        public virtual Product Product { get; set; }
+        public User User { get; set; }
+
+        public ICollection<Product> Products { get; set; }
     }
 }

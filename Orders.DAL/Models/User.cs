@@ -9,6 +9,6 @@ namespace Orders.DAL.Models
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

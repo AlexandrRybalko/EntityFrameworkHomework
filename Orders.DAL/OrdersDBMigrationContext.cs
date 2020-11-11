@@ -19,9 +19,8 @@ namespace Orders.DAL
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Order>()
-                .HasRequired(x => x.Product)
-                .WithMany(x => x.Orders)
-                .HasForeignKey(x => x.ProductId);
+                .HasMany(x => x.Products)
+                .WithMany(x => x.Orders);
 
             modelBuilder.Entity<Order>()
                 .HasRequired(x => x.User)
