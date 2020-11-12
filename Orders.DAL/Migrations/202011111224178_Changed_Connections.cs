@@ -1,6 +1,7 @@
 ﻿namespace Orders.DAL.Migrations
 {
     using System;
+    using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Migrations;
     
     public partial class Changed_Connections : DbMigration
@@ -21,8 +22,15 @@
                 .ForeignKey("dbo.Products", t => t.Product_Id, cascadeDelete: true)
                 .Index(t => t.Order_Id)
                 .Index(t => t.Product_Id);
-            
-            DropColumn("dbo.Orders", "ProductId");
+
+            string query = "DECLARE @count INT, @c INT" + "\n" + "SET @count=(SELECT MAX(Id) FROM Orders);" + "\n" + "SET @c=1;" + "\n" + "WHILE(@c<=@count)" + "\n" 
+                + "BEGIN" + "\n" + "IF EXISTS(SELECT Id FROM Orders WHERE Id=@c)" + "\n"  + "BEGIN"  + "\n" 
+                + "INSERT INTO OrderProducts(Order_Id, Product_Id) VALUES((SELECT Id FROM Orders WHERE Id = @c), (SELECT ProductId FROM Orders WHERE Id = @c))"  + "\n" 
+                + "END" + "\n" + "SET @c = @c + 1" + "\n" + "END";
+
+            Sql(query); 
+
+             DropColumn("dbo.Orders", "ProductId");
         }
         
         public override void Down()
@@ -35,6 +43,8 @@
             DropTable("dbo.OrderProducts");
             CreateIndex("dbo.Orders", "ProductId");
             AddForeignKey("dbo.Orders", "ProductId", "dbo.Products", "Id", cascadeDelete: true);
+
+            string query = "";
         }
     }
 }
