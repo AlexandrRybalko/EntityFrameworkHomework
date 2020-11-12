@@ -23,10 +23,10 @@
                 .Index(t => t.Order_Id)
                 .Index(t => t.Product_Id);
 
-            string query = "DECLARE @count INT, @c INT" + "\n" + "SET @count=(SELECT MAX(Id) FROM Orders);" + "\n" + "SET @c=1;" + "\n" + "WHILE(@c<=@count)" + "\n" 
-                + "BEGIN" + "\n" + "IF EXISTS(SELECT Id FROM Orders WHERE Id=@c)" + "\n"  + "BEGIN"  + "\n" 
-                + "INSERT INTO OrderProducts(Order_Id, Product_Id) VALUES((SELECT Id FROM Orders WHERE Id = @c), (SELECT ProductId FROM Orders WHERE Id = @c))"  + "\n" 
-                + "END" + "\n" + "SET @c = @c + 1" + "\n" + "END";
+            string query = "DECLARE @count INT, @id INT" + "\n" + "SET @count=(SELECT MAX(Id) FROM Orders);" + "\n" + "SET @id=1;" + "\n" + "WHILE(@id<=@count)" + "\n" 
+                + "BEGIN" + "\n" + "IF EXISTS(SELECT Id FROM Orders WHERE Id=@id)" + "\n"  + "BEGIN"  + "\n" 
+                + "INSERT INTO OrderProducts(Order_Id, Product_Id) VALUES((SELECT Id FROM Orders WHERE Id = @id), (SELECT ProductId FROM Orders WHERE Id = @id))" + "\n" 
+                + "END" + "\n" + "SET @id = @id + 1" + "\n" + "END";
 
             Sql(query); 
 
